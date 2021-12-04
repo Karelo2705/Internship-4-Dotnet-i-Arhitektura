@@ -24,7 +24,7 @@ namespace NiceApp
 
 
             var newUser = new User(name, surname, adress);
-
+            return null;
 
         }
         private static void Delay()

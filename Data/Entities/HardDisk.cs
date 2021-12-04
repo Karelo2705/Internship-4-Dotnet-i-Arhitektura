@@ -8,5 +8,8 @@ namespace NiceApp.Entities
 {
     internal class HardDisk
     {
+        public int StorageSize;
+        public int Weight;
+        public string DiskType;
     }
 }
