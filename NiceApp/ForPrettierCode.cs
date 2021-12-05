@@ -7,7 +7,7 @@ namespace NiceApp
 {
     public class ForPrettierCode
     {
-        public static string Menu()
+        public static void InitDiag()
         {
             Console.WriteLine("||||||||||||||||||||");
             Console.WriteLine("Little hardware shop");
@@ -24,12 +24,48 @@ namespace NiceApp
 
 
             var newUser = new User(name, surname, adress);
-            return null;
+            Console.Clear();
 
         }
+        private static string Menu()
+        {
+            return
+                "Prijava uspjesna!\n" +
+                "Koju uslugu želite izabrati\n" +
+                "1 - Sastavi i naruci novo racunalo\n" +
+                "2 - Prikazi moje narudzbe\n" +
+                "3 - Odjava\n";
+
+        }
+
         private static void Delay()
         {
             Task.Delay(2000).Wait();
+        }
+
+        public static void OpenMenu()
+        {
+            
+            var imABool = true;
+            int options;
+            while (imABool)
+            {
+                Console.WriteLine(Menu());
+
+                while(!int.TryParse(Console.ReadLine(), out options))
+                    Console.WriteLine("Nevažeći input.");
+
+                switch (options)
+                {
+                    case 1:
+                        ChooseComponents.TypeChoose();
+                        break;
+                    case 3:
+                        imABool = false;
+                        break;
+
+                }
+            }
         }
     }
 }

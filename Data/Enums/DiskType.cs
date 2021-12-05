@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data.Enums
 {
-    public enum Products
+    public enum DiskType
     {
-        AMD,
-        Intel,
-    
+        SSD,
+        HDD,
     }
 }

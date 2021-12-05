@@ -6,7 +6,8 @@ namespace NiceApp
     {
         static void Main(string[] args)
         {
-            
+            ForPrettierCode.InitDiag();
+            ForPrettierCode.OpenMenu();
         }
     }
 }
