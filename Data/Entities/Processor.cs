@@ -20,8 +20,8 @@ namespace NiceApp.Interfaces
         override public TypeOfComp GetTypeOfComp() => TypeOfComp.Processor;
         override public string Data()
         {
-            var data = $"{Company}, {CoreNum}";
-            return $"{data}, {Price}";
+            var data = $"{Company}, {CoreNum} jezgre";
+            return $"{data}, {Price}kn";
         }
     }
 }

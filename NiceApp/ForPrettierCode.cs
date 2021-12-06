@@ -1,7 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Data;
+using Data.Entities;
 using Domain;
-
+using Presentation;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NiceApp
 {
@@ -12,18 +15,21 @@ namespace NiceApp
             Console.WriteLine("||||||||||||||||||||");
             Console.WriteLine("Little hardware shop");
             Console.WriteLine("||||||||||||||||||||\n");
-            Delay();
             Console.WriteLine("Za pristup sustavu prvo se trebate prijaviti.");
-            Delay();
+
             Console.WriteLine("Unesite svoje ime (samo ime, bez prezimena): ");
             var name = Console.ReadLine();
+            CheckIfNum(name);
+
             Console.WriteLine("Unesite svoje prezime: ");
             var surname = Console.ReadLine();
+            CheckIfNum(surname);
+
             Console.WriteLine("Unesite adresu ulice u koju želite da paket bude dostavljen: ");
             var adress = Console.ReadLine();
 
 
-            var newUser = new User(name, surname, adress);
+            StoreUser.Set(name, surname, adress);
             Console.Clear();
 
         }
@@ -38,34 +44,81 @@ namespace NiceApp
 
         }
 
-        private static void Delay()
+        public static void Delay()
         {
             Task.Delay(2000).Wait();
         }
 
         public static void OpenMenu()
         {
-            
             var imABool = true;
             int options;
             while (imABool)
             {
                 Console.WriteLine(Menu());
 
-                while(!int.TryParse(Console.ReadLine(), out options))
+                while (!int.TryParse(Console.ReadLine(), out options))
                     Console.WriteLine("Nevažeći input.");
 
                 switch (options)
                 {
                     case 1:
-                        ChooseComponents.TypeChoose();
+                        var components = PartBuilder.FinalBuilder();
+                        Console.Clear();
+                        Console.WriteLine("Vaša konfiguracija:");
+                        PartBuilder.ComponentsPrinter(components);
+                        Console.WriteLine("pritisnite bilo koju tipku za nastavak.");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
+                    case 2:
+                        Console.Clear();
+                        SecondMenu();
+                        break;
+
                     case 3:
                         imABool = false;
                         break;
 
+                    default:
+                        Console.Clear();
+                        break;
+
+
                 }
             }
+        }
+
+
+        public static string CheckIfNum(string name)
+        {
+            bool canConvert = int.TryParse(name, out int num);
+            while (canConvert)
+            {
+
+                Console.WriteLine("Ime ili prezime nemože biti broj!");
+                name = Console.ReadLine();
+                canConvert = int.TryParse(name, out num);
+
+            }
+            return name;
+
+        }
+        public static void SecondMenu()
+        {
+            var listItems = OrderAdd.OrderIds;
+            var newList = new List<string>();
+            Console.WriteLine("Vaša narudžba:");
+            foreach (var item in listItems)
+            {
+                newList.Add(item);
+            }
+            foreach(var item in newList)
+            {
+                Console.WriteLine(item); 
+            }
+            Delay();
+            Console.Clear ();
         }
     }
 }

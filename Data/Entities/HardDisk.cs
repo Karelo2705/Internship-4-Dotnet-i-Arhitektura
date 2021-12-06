@@ -21,8 +21,8 @@ namespace NiceApp.Entities
         override public TypeOfComp GetTypeOfComp() => TypeOfComp.HardDisk;
         override public string Data()
         {
-            var data = $"{StorageSize}TB {Type} {Weight}";
-                return $"{data}, {Price}";
+            var data = $"{StorageSize}TB {Type} {Weight}kg";
+                return $"{data}, {Price}kn";
         }
     }
 }

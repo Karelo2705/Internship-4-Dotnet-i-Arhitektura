@@ -20,7 +20,7 @@ namespace NiceApp.Entities
         override public string Data()
         {
             var data = $" card od {Size}GB";
-            return $"{data}, {Price}";
+            return $"{data}, {Price}kn";
         }
     }
    

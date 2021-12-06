@@ -8,25 +8,13 @@ namespace Domain
 {
     public class User
     {
-        public String name { get; set; }
-        public String surname { get; set; }
+        static public string name { get; set; }
+        static public string surname { get; set; }
 
-        public String adress { get; set; }
+        static public string adress { get; set; }
 
-        public int Distance { get; set; }
+        static public int Distance { get; set; }
 
-
-        public User(String Name, String Surname, String Adress)
-        {
-            name = Name;
-            surname = Surname;
-            adress = Adress;
-            Distance = DistanceGen();
-        }
-        public int DistanceGen()
-        {
-            var num = new Random();
-            return (num.Next(50, 999));
-        }
+      
     }
 }
