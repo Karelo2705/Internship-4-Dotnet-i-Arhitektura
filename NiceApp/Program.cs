@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace NiceApp
 {
@@ -6,6 +8,7 @@ namespace NiceApp
     {
         static void Main(string[] args)
         {
+
             ForPrettierCode.InitDiag();
             ForPrettierCode.OpenMenu();
         }
