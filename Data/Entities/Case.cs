@@ -20,8 +20,8 @@ namespace NiceApp.Entities
         override public TypeOfComp GetTypeOfComp() => TypeOfComp.Case;
         override public string Data()
         {
-            var data = $"{Material}({Weight}) ";
-            return $"{data}, {Price}";
+            var data = $"{Material}({Weight}kg) ";
+            return $"{data}, {Price}kn";
         }
     }
 }
